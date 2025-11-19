@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'user_list_screen.dart'; // Importar LISTA de Actividad Anterior
+import 'user_list_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,8 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
           key: _formKey,
           child: Column(
             children: [
-
-              // EMAIL
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Correo',
@@ -42,10 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 onSaved: (value) => _email = value!,
               ),
-
               const SizedBox(height: 16),
-
-              // PASSWORD
               TextFormField(
                 obscureText: true,
                 decoration: const InputDecoration(
@@ -63,18 +58,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 onSaved: (value) => _password = value!,
               ),
-
               const SizedBox(height: 24),
-
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => UserListScreen(),
+                        builder: (_) => UserListScreen(email: _email),
                       ),
                     );
                   }
